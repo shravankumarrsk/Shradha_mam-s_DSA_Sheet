@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Shradha Ma'am DSA Sheet Solutions
 
 This repository contains my solutions to the complete DSA Sheet by Shradha Ma'am.
@@ -17,3 +18,7 @@ Topics Covered:
 - Greedy
 - Heap
 - Trie
+=======
+# Shradha_mam-s_DSA_Sheet
+DSA Sheet by apna collage
+>>>>>>> 1843abf4f994cc58ccd0ef41a24af38e7d106f93
