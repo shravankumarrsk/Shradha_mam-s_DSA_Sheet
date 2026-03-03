@@ -39,3 +39,83 @@ public:
     }
 };
 
+
+/* You are given a 0-indexed 2D integer matrix grid of size n * n with values in the range [1, n2]. Each integer appears exactly once except a which appears twice and b which is missing. The task is to find the repeating and missing numbers a and b.
+
+Return a 0-indexed integer array ans of size 2 where ans[0] equals to a and ans[1] equals to b.
+
+ 
+
+Example 1:
+
+Input: grid = [[1,3],[2,2]]
+Output: [2,4]
+Explanation: Number 2 is repeated and number 4 is missing so the answer is [2,4].
+
+
+
+find missing and repeating values
+
+*/
+
+class Solution {
+public:
+    vector<int> findMissingAndRepeatedValues(vector<vector<int>>& grid) {
+       int n=grid.size();
+       vector<int>ans;
+       int cursum=0;
+       long long sq=(long long)n*n;
+      unordered_set<int>st;
+       for(int i=0;i<n;i++){
+        for(int j=0;j<n;j++){
+                if(st.find(grid[i][j])!=st.end()){
+                    ans.push_back(grid[i][j]);
+                }else{
+                    st.insert(grid[i][j]);
+                    cursum+=grid[i][j];
+                }
+        }
+       }
+       long long totalsum=sq*(sq+1)/2;
+       ans.push_back(totalsum-cursum);
+       return ans;
+    }
+};
+
+
+/* You are given an integer array height of length n. There are n vertical lines drawn such that the two endpoints of the ith line are (i, 0) and (i, height[i]).
+
+Find two lines that together with the x-axis form a container, such that the container contains the most water.
+
+Return the maximum amount of water a container can store.
+
+Notice that you may not slant the container.   
+
+Container with most water
+
+*/
+
+
+class Solution {
+public:
+    int maxArea(vector<int>& height) {
+        int n=height.size();
+        int maxwater=0;
+        int lp=0;
+        int rp=n-1;
+        while(lp<rp)
+        {
+                int w=rp-lp;
+                int ht=min(height[lp],height[rp]);
+                int currwater=ht*w;
+                maxwater=max(currwater,maxwater);
+                if(height[lp]<height[rp]){
+                    lp++;
+                }else{
+                    rp--;
+                }
+        }
+        
+        return maxwater;
+    }
+};
